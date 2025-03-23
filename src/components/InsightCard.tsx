@@ -1,7 +1,9 @@
+
 import { useState } from 'react';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+
 interface InsightCardProps {
   title: string;
   excerpt: string;
@@ -12,6 +14,7 @@ interface InsightCardProps {
   link: string;
   index: number;
 }
+
 const InsightCard = ({
   title,
   excerpt,
@@ -27,18 +30,22 @@ const InsightCard = ({
   // Function to render formatted excerpt content with markdown-like formatting
   const renderExcerpt = (text: string) => {
     if (!text.includes('\n') && !text.includes('**')) {
-      return <p className="line-clamp-3">{text}</p>;
+      return <p className="line-clamp-3 text-sm">
+        {text}
+      </p>;
     }
+    
     return text.split('\n\n').map((paragraph, i) => {
       // Check if paragraph is a heading (surrounded by **)
       if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
         return <h4 key={i} className="font-semibold text-sm mt-2 mb-1">
-            {paragraph.slice(2, -2)}
-          </h4>;
+          {paragraph.slice(2, -2)}
+        </h4>;
       }
       return <p key={i} className="mb-2 text-sm">{paragraph}</p>;
     });
   };
+
   return <article className={cn("group overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border border-border", "hover:shadow-lg transition-all duration-300", "animate-fade-in", "h-full flex flex-col")} style={{
     animationDelay: `${index * 150}ms`
   }}>
@@ -83,4 +90,5 @@ const InsightCard = ({
       </div>
     </article>;
 };
+
 export default InsightCard;
