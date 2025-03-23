@@ -1,9 +1,7 @@
-
 import { useState } from 'react';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-
 interface InsightCardProps {
   title: string;
   excerpt: string;
@@ -14,46 +12,24 @@ interface InsightCardProps {
   link: string;
   index: number;
 }
-
-const InsightCard = ({ 
-  title, 
-  excerpt, 
-  category, 
-  coverImage, 
-  date, 
-  readTime, 
+const InsightCard = ({
+  title,
+  excerpt,
+  category,
+  coverImage,
+  date,
+  readTime,
   link,
-  index 
+  index
 }: InsightCardProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  return (
-    <article 
-      className={cn(
-        "group overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border border-border",
-        "hover:shadow-lg transition-all duration-300",
-        "animate-fade-in"
-      )}
-      style={{
-        animationDelay: `${index * 150}ms`
-      }}
-    >
+  return <article className={cn("group overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border border-border", "hover:shadow-lg transition-all duration-300", "animate-fade-in")} style={{
+    animationDelay: `${index * 150}ms`
+  }}>
       {/* Image */}
       <div className="relative h-48 md:h-56 lg:h-64 overflow-hidden">
-        <div className={cn(
-          "absolute inset-0 bg-gray-200 animate-pulse",
-          isImageLoaded ? "opacity-0" : "opacity-100"
-        )} />
-        <img
-          src={coverImage}
-          alt={title}
-          className={cn(
-            "w-full h-full object-cover transition-all duration-500",
-            "group-hover:scale-105",
-            isImageLoaded ? "opacity-100" : "opacity-0"
-          )}
-          onLoad={() => setIsImageLoaded(true)}
-        />
+        <div className={cn("absolute inset-0 bg-gray-200 animate-pulse", isImageLoaded ? "opacity-0" : "opacity-100")} />
+        <img src={coverImage} alt={title} className={cn("w-full h-full object-cover transition-all duration-500", "group-hover:scale-105", isImageLoaded ? "opacity-100" : "opacity-0")} onLoad={() => setIsImageLoaded(true)} />
         {/* Category tag */}
         <div className="absolute top-4 left-4 bg-primary text-white text-xs font-medium px-3 py-1 rounded-full">
           {category}
@@ -83,17 +59,12 @@ const InsightCard = ({
         </div>
         
         <a href={link}>
-          <Button 
-            variant="outline" 
-            className="w-full group-hover:border-primary group-hover:text-primary transition-colors duration-300"
-          >
-            <span>Read Article</span>
+          <Button variant="outline" className="w-full group-hover:border-primary group-hover:text-primary transition-colors duration-300">
+            <span className="text-zinc-950">Read Article</span>
             <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
         </a>
       </div>
-    </article>
-  );
+    </article>;
 };
-
 export default InsightCard;
