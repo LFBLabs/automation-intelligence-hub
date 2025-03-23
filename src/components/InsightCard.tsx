@@ -38,7 +38,7 @@ const InsightCard = ({
     return text.split('\n\n').map((paragraph, i) => {
       // Check if paragraph is a heading (surrounded by **)
       if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
-        return <h4 key={i} className="font-semibold text-lg text-blue-500 mt-2 mb-1">
+        return <h4 key={i} className="font-semibold text-sm mt-2 mb-1">
           {paragraph.slice(2, -2)}
         </h4>;
       }
