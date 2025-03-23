@@ -31,7 +31,7 @@ const insightsData = [
     coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Conversational+Agents",
     date: "May 15, 2023",
     readTime: "20 min read",
-    link: "#"
+    link: "/article/conversational-agents"
   }
 ];
 
