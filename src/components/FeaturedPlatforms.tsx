@@ -5,46 +5,46 @@ import { cn } from '@/lib/utils';
 
 const platformsData = [
   {
-    name: "AutoGPT",
-    category: "Autonomous Agent",
-    description: "A fully autonomous AI agent that can chain multiple tasks together to achieve complex goals with minimal human input.",
-    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=AutoGPT&font=playfair",
-    link: "#"
+    name: "Make.com",
+    category: "Automation Platform",
+    description: "A visual platform letting you design, build, and automate anything from simple tasks to complex workflows in minutes.",
+    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Make.com&font=playfair",
+    audioSrc: "/audio-sample.mp3", // Replace with actual audio file
+    isComingSoon: false
   },
   {
-    name: "LangChain",
-    category: "Framework",
-    description: "A framework for developing applications powered by language models, enabling complex chains, agents, and tools integration.",
-    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=LangChain&font=playfair",
-    link: "#"
-  },
-  {
-    name: "Fixie",
-    category: "Agent Platform",
-    description: "Build, deploy, and scale AI agents that can understand context, solve problems, and take actions in your systems.",
-    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Fixie&font=playfair",
-    link: "#"
-  },
-  {
-    name: "Zapier AI",
+    name: "n8n",
     category: "Workflow Automation",
-    description: "AI-powered automation that helps you build workflows between your apps with natural language instructions.",
-    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Zapier+AI&font=playfair",
-    link: "#"
+    description: "Open-source workflow automation tool with a fair-code license that helps you to connect different services and build automated workflows.",
+    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=n8n&font=playfair",
+    audioSrc: "/audio-sample.mp3", // Replace with actual audio file
+    isComingSoon: false
   },
   {
-    name: "Mendable AI",
-    category: "Document Agent",
-    description: "Specialized AI agents that learn from your documentation and help users find answers through natural conversation.",
-    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Mendable&font=playfair",
-    link: "#"
+    name: "Relevance AI",
+    category: "AI Platform",
+    description: "Build, deploy, and scale AI applications with a platform that simplifies data integration and AI capability development.",
+    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Relevance+AI&font=playfair",
+    audioSrc: "/audio-sample.mp3", // Replace with actual audio file
+    isComingSoon: false
   },
   {
-    name: "Synthflow",
-    category: "Agent Designer",
-    description: "Visual platform for designing, testing, and deploying AI agents without code, with built-in performance analytics.",
-    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Synthflow&font=playfair",
-    link: "#"
+    name: "Future Platform 1",
+    category: "Coming Soon",
+    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Coming+Soon&font=playfair",
+    isComingSoon: true
+  },
+  {
+    name: "Future Platform 2",
+    category: "Coming Soon",
+    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Coming+Soon&font=playfair",
+    isComingSoon: true
+  },
+  {
+    name: "Future Platform 3",
+    category: "Coming Soon",
+    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Coming+Soon&font=playfair",
+    isComingSoon: true
   }
 ];
 
@@ -112,6 +112,8 @@ const FeaturedPlatforms = () => {
               logo={platform.logo}
               link={platform.link}
               index={index}
+              audioSrc={platform.audioSrc}
+              isComingSoon={platform.isComingSoon}
             />
           ))}
         </div>

@@ -1,20 +1,50 @@
 
 import { useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { Play, Pause } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface PlatformCardProps {
   name: string;
   category: string;
-  description: string;
+  description?: string;
   logo: string;
-  link: string;
+  link?: string;
   index: number;
+  audioSrc?: string;
+  isComingSoon?: boolean;
 }
 
-const PlatformCard = ({ name, category, description, logo, link, index }: PlatformCardProps) => {
+const PlatformCard = ({ 
+  name, 
+  category, 
+  description, 
+  logo, 
+  link, 
+  index, 
+  audioSrc,
+  isComingSoon 
+}: PlatformCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audio] = useState(audioSrc ? new Audio(audioSrc) : null);
+
+  const toggleAudio = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!audio) return;
+    
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.play().catch(err => console.error("Error playing audio:", err));
+      setIsPlaying(true);
+      
+      audio.onended = () => {
+        setIsPlaying(false);
+      };
+    }
+  };
 
   return (
     <div 
@@ -30,12 +60,7 @@ const PlatformCard = ({ name, category, description, logo, link, index }: Platfo
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <a 
-        href={link} 
-        className="block p-6 h-full"
-        target="_blank" 
-        rel="noreferrer"
-      >
+      <div className="block p-6 h-full">
         <div className="flex flex-col h-full">
           {/* Image Container */}
           <div className="mb-5 h-12 relative flex items-center">
@@ -64,23 +89,40 @@ const PlatformCard = ({ name, category, description, logo, link, index }: Platfo
             {name}
           </h3>
 
-          {/* Description */}
-          <p className="text-muted-foreground text-sm mb-4 flex-grow">
-            {description}
-          </p>
+          {/* Description or Coming Soon */}
+          {isComingSoon ? (
+            <p className="text-muted-foreground text-sm mb-4 flex-grow font-medium">
+              Coming soon
+            </p>
+          ) : (
+            <p className="text-muted-foreground text-sm mb-4 flex-grow">
+              {description}
+            </p>
+          )}
 
-          {/* Link */}
-          <div className="flex items-center text-sm font-medium mt-auto">
-            <span className="text-primary">Learn more</span>
-            <ArrowUpRight 
-              className={cn(
-                "ml-1 h-4 w-4 text-primary transition-transform duration-300",
-                isHovered ? "translate-x-1 -translate-y-1" : ""
-              )} 
-            />
-          </div>
+          {/* Audio Player (only for non-coming soon cards) */}
+          {!isComingSoon && audioSrc && (
+            <div className="mt-auto">
+              <button
+                onClick={toggleAudio}
+                className="flex items-center justify-center w-full p-2 bg-primary/10 rounded-lg text-primary hover:bg-primary/20 transition-colors"
+              >
+                {isPlaying ? (
+                  <>
+                    <Pause className="h-5 w-5 mr-2" />
+                    <span>Pause Audio</span>
+                  </>
+                ) : (
+                  <>
+                    <Play className="h-5 w-5 mr-2" />
+                    <span>Play Audio</span>
+                  </>
+                )}
+              </button>
+            </div>
+          )}
         </div>
-      </a>
+      </div>
     </div>
   );
 };
