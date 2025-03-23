@@ -74,18 +74,6 @@ const Footer = () => {
           <p className="text-muted-foreground text-sm">
             © {currentYear} Automation Intelligence Hub. All rights reserved.
           </p>
-          
-          <div className="mt-4 md:mt-0 flex space-x-6">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm">
-              Terms
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm">
-              Privacy
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm">
-              Cookies
-            </a>
-          </div>
         </div>
       </div>
     </footer>
