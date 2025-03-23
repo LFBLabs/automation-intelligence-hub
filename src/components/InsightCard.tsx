@@ -65,7 +65,7 @@ const InsightCard = ({
           {title}
         </h3>
         
-        <div className="text-muted-foreground text-sm mb-4 overflow-hidden max-h-[4.5rem]">
+        <div className="text-muted-foreground mb-4 overflow-hidden flex-grow">
           {renderExcerpt(excerpt)}
         </div>
         
