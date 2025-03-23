@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -59,7 +60,7 @@ const InsightCard = ({
         </div>
         
         <a href={link}>
-          <Button variant="outline" className="w-full group-hover:border-primary group-hover:text-primary transition-colors duration-300">
+          <Button variant="outline" className="w-full group-hover:border-primary transition-colors duration-300">
             <span className="text-zinc-950">Read Article</span>
             <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
