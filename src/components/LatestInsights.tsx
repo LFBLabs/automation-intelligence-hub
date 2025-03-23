@@ -22,7 +22,7 @@ const insightsData = [
     coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Framework+Comparison",
     date: "May 28, 2023",
     readTime: "15 min read",
-    link: "#"
+    link: "/article/langchain-vs-llamaindex"
   },
   {
     title: "Building Conversational AI Agents That Connect To Your Tools and Data",
