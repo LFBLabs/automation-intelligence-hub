@@ -26,7 +26,7 @@ const insightsData = [
   },
   {
     title: "Building Conversational AI Agents That Connect To Your Tools and Data",
-    excerpt: "Step-by-step guide on how to create AI agents that can understand context, leverage your internal knowledge, and integrate with your existing tools.",
+    excerpt: "**Getting Started**\n\nStep-by-step guide on creating AI agents that understand context and leverage your internal knowledge.\n\n**Key Integration Points**\n\nLearn how to connect your AI agents with your existing tools and databases for maximum efficiency.\n\n**Best Practices**\n\nDiscover proven techniques for designing natural, effective conversational interfaces.",
     category: "Tutorial",
     coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Conversational+Agents",
     date: "May 15, 2023",

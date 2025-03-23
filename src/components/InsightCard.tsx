@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+
 interface InsightCardProps {
   title: string;
   excerpt: string;
@@ -13,6 +14,7 @@ interface InsightCardProps {
   link: string;
   index: number;
 }
+
 const InsightCard = ({
   title,
   excerpt,
@@ -24,6 +26,26 @@ const InsightCard = ({
   index
 }: InsightCardProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  
+  // Function to render formatted excerpt content with markdown-like formatting
+  const renderExcerpt = (text: string) => {
+    if (!text.includes('\n') && !text.includes('**')) {
+      return <p>{text}</p>;
+    }
+    
+    return text.split('\n\n').map((paragraph, i) => {
+      // Check if paragraph is a heading (surrounded by **)
+      if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
+        return (
+          <h4 key={i} className="font-semibold text-sm mt-2 mb-1">
+            {paragraph.slice(2, -2)}
+          </h4>
+        );
+      }
+      return <p key={i} className="mb-2">{paragraph}</p>;
+    });
+  };
+
   return <article className={cn("group overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border border-border", "hover:shadow-lg transition-all duration-300", "animate-fade-in")} style={{
     animationDelay: `${index * 150}ms`
   }}>
@@ -43,9 +65,9 @@ const InsightCard = ({
           {title}
         </h3>
         
-        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-          {excerpt}
-        </p>
+        <div className="text-muted-foreground text-sm mb-4 line-clamp-3 prose-sm">
+          {renderExcerpt(excerpt)}
+        </div>
         
         {/* Meta */}
         <div className="flex items-center text-xs text-muted-foreground mb-5">
@@ -68,4 +90,5 @@ const InsightCard = ({
       </div>
     </article>;
 };
+
 export default InsightCard;
