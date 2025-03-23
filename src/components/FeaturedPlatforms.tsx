@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect } from 'react';
 import PlatformCard from './PlatformCard';
 import { cn } from '@/lib/utils';
@@ -79,7 +78,6 @@ const FeaturedPlatforms = () => {
 
   return (
     <section id="platforms" className="py-20 relative overflow-hidden" ref={sectionRef}>
-      {/* Background decorations */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -bottom-[20%] -left-[10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-3xl"></div>
       </div>
@@ -110,7 +108,6 @@ const FeaturedPlatforms = () => {
               category={platform.category}
               description={platform.description}
               logo={platform.logo}
-              link={platform.link}
               index={index}
               audioSrc={platform.audioSrc}
               isComingSoon={platform.isComingSoon}
