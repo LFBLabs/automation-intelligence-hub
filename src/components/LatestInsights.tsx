@@ -1,9 +1,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import InsightCard from './InsightCard';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
 
 const insightsData = [
   {
@@ -69,7 +67,7 @@ const LatestInsights = () => {
       <div className="container px-6 md:px-8">
         <div 
           className={cn(
-            "flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6",
+            "mb-12",
             "transition-all duration-700",
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
@@ -84,13 +82,6 @@ const LatestInsights = () => {
             <p className="text-muted-foreground">
               In-depth analysis, tutorials, and case studies on the leading AI automation platforms and how they're transforming industries.
             </p>
-          </div>
-          
-          <div>
-            <Button variant="outline" className="border-2 group">
-              <span>View All Articles</span>
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Button>
           </div>
         </div>
 
