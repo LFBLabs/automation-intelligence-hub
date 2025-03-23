@@ -13,7 +13,7 @@ const insightsData = [
     coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=AutoGPT+Analysis",
     date: "June 12, 2023",
     readTime: "12 min read",
-    link: "#"
+    link: "/article/autogpt"
   },
   {
     title: "LangChain vs LlamaIndex: Choosing the Right Framework for Your AI Application",
