@@ -51,13 +51,6 @@ const Navigation = () => {
           ))}
         </nav>
 
-        {/* CTA Button */}
-        <div className="hidden md:block">
-          <Button className="bg-primary hover:bg-primary/90 transition-all duration-300">
-            Subscribe
-          </Button>
-        </div>
-
         {/* Mobile Menu Button */}
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -87,12 +80,6 @@ const Navigation = () => {
               {item.label}
             </a>
           ))}
-          <Button 
-            className="bg-primary hover:bg-primary/90 transition-all duration-300 w-full mt-4"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Subscribe
-          </Button>
         </nav>
       </div>
     </header>
