@@ -30,7 +30,7 @@ const InsightCard = ({
   // Function to render formatted excerpt content with markdown-like formatting
   const renderExcerpt = (text: string) => {
     if (!text.includes('\n') && !text.includes('**')) {
-      return <p>{text}</p>;
+      return <p className="line-clamp-3">{text}</p>;
     }
     
     return text.split('\n\n').map((paragraph, i) => {
@@ -42,17 +42,22 @@ const InsightCard = ({
           </h4>
         );
       }
-      return <p key={i} className="mb-2">{paragraph}</p>;
+      return <p key={i} className="mb-2 text-sm">{paragraph}</p>;
     });
   };
 
-  return <article className={cn("group overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border border-border", "hover:shadow-lg transition-all duration-300", "animate-fade-in")} style={{
+  return <article className={cn("group overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border border-border", "hover:shadow-lg transition-all duration-300", "animate-fade-in", "h-full flex flex-col")} style={{
     animationDelay: `${index * 150}ms`
   }}>
       {/* Image */}
       <div className="relative h-48 md:h-56 lg:h-64 overflow-hidden">
         <div className={cn("absolute inset-0 bg-gray-200 animate-pulse", isImageLoaded ? "opacity-0" : "opacity-100")} />
-        <img src={coverImage} alt={title} className={cn("w-full h-full object-cover transition-all duration-500", "group-hover:scale-105", isImageLoaded ? "opacity-100" : "opacity-0")} onLoad={() => setIsImageLoaded(true)} />
+        <img 
+          src={coverImage} 
+          alt={title} 
+          className={cn("w-full h-full object-cover transition-all duration-500", "group-hover:scale-105", isImageLoaded ? "opacity-100" : "opacity-0")} 
+          onLoad={() => setIsImageLoaded(true)} 
+        />
         {/* Category tag */}
         <div className="absolute top-4 left-4 bg-primary text-white text-xs font-medium px-3 py-1 rounded-full">
           {category}
@@ -60,17 +65,17 @@ const InsightCard = ({
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-xl font-display font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
           {title}
         </h3>
         
-        <div className="text-muted-foreground text-sm mb-4 line-clamp-3 prose-sm">
+        <div className="text-muted-foreground text-sm mb-4 overflow-hidden max-h-[4.5rem]">
           {renderExcerpt(excerpt)}
         </div>
         
         {/* Meta */}
-        <div className="flex items-center text-xs text-muted-foreground mb-5">
+        <div className="flex items-center text-xs text-muted-foreground mb-5 mt-auto">
           <div className="flex items-center">
             <Calendar className="h-3.5 w-3.5 mr-1" />
             <span>{date}</span>
