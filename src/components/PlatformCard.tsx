@@ -1,5 +1,6 @@
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { Play, Pause } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface PlatformCardProps {
@@ -9,6 +10,7 @@ interface PlatformCardProps {
   logo: string;
   link?: string;
   index: number;
+  audioSrc?: string;
   isComingSoon?: boolean;
 }
 
@@ -19,10 +21,51 @@ const PlatformCard = ({
   logo, 
   link, 
   index, 
+  audioSrc,
   isComingSoon 
 }: PlatformCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    // Initialize audio element when component mounts
+    if (audioSrc) {
+      audioRef.current = new Audio(audioSrc);
+      
+      // Add event listener for when audio ends
+      const handleAudioEnd = () => setIsPlaying(false);
+      audioRef.current.addEventListener('ended', handleAudioEnd);
+      
+      // Clean up event listeners when component unmounts
+      return () => {
+        if (audioRef.current) {
+          audioRef.current.removeEventListener('ended', handleAudioEnd);
+          audioRef.current.pause();
+          audioRef.current = null;
+        }
+      };
+    }
+  }, [audioSrc]);
+
+  const toggleAudio = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!audioRef.current) return;
+    
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      // Play and handle any errors
+      audioRef.current.play()
+        .then(() => setIsPlaying(true))
+        .catch(err => {
+          console.error("Error playing audio:", err);
+          setIsPlaying(false);
+        });
+    }
+  };
 
   return (
     <div 
@@ -78,8 +121,31 @@ const PlatformCard = ({
             </p>
           )}
 
-          {/* Link button for non-coming soon cards */}
-          {!isComingSoon && (
+          {/* Audio Player (only for non-coming soon cards) */}
+          {!isComingSoon && audioSrc && (
+            <div className="mt-auto">
+              <button
+                onClick={toggleAudio}
+                className="flex items-center justify-center w-full p-2 bg-primary/10 rounded-lg text-primary hover:bg-primary/20 transition-colors"
+                aria-label={isPlaying ? "Pause audio" : "Play audio"}
+              >
+                {isPlaying ? (
+                  <>
+                    <Pause className="h-5 w-5 mr-2" />
+                    <span>Pause Audio</span>
+                  </>
+                ) : (
+                  <>
+                    <Play className="h-5 w-5 mr-2" />
+                    <span>Play Audio</span>
+                  </>
+                )}
+              </button>
+            </div>
+          )}
+
+          {/* Link button for non-coming soon cards without audio */}
+          {!isComingSoon && !audioSrc && (
             <div className="mt-auto">
               <a
                 href={link || "#"}
