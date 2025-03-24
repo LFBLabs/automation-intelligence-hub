@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, Pause } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { toast } from 'sonner';
 
 interface PlatformCardProps {
   name: string;
@@ -62,6 +63,7 @@ const PlatformCard = ({
         .then(() => setIsPlaying(true))
         .catch(err => {
           console.error("Error playing audio:", err);
+          toast.error("Could not play audio. Please try again.");
           setIsPlaying(false);
         });
     }

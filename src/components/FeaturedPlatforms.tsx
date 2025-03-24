@@ -9,7 +9,7 @@ const platformsData = [
     category: "Automation Platform",
     description: "A visual platform letting you design, build, and automate anything from simple tasks to complex workflows in minutes.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Make.com&font=playfair",
-    audioSrc: "/platform-audio-files/make-audio.mp3",
+    audioSrc: "platform-audio-files/make-audio.mp3",
     isComingSoon: false
   },
   {
@@ -17,7 +17,7 @@ const platformsData = [
     category: "Workflow Automation",
     description: "Open-source workflow automation tool with a fair-code license that helps you to connect different services and build automated workflows.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=n8n&font=playfair",
-    audioSrc: "/platform-audio-files/n8n-audio.mp3",
+    audioSrc: "platform-audio-files/n8n-audio.mp3",
     isComingSoon: false
   },
   {
@@ -25,7 +25,7 @@ const platformsData = [
     category: "AI Platform",
     description: "Build, deploy, and scale AI applications with a platform that simplifies data integration and AI capability development.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Relevance+AI&font=playfair",
-    audioSrc: "/platform-audio-files/relevance-audio.mp3",
+    audioSrc: "platform-audio-files/relevance-audio.mp3",
     isComingSoon: false
   },
   {
