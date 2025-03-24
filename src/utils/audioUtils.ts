@@ -43,5 +43,11 @@ export const createAudioPlayer = (audioSrc: string) => {
       audio.removeEventListener(event, callback),
     isLoaded: () => isLoaded,
     hasError: () => hasError,
+    setVolume: (volume: number) => {
+      audio.volume = Math.max(0, Math.min(1, volume));
+    },
+    reset: () => {
+      audio.currentTime = 0;
+    }
   };
 };

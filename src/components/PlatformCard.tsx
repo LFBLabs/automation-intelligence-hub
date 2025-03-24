@@ -57,6 +57,7 @@ const PlatformCard = ({
           setAudioError(true);
           setAudioLoaded(false);
           clearInterval(checkInterval);
+          console.log(`Failed to load audio for ${name}: ${audioSrc}`);
         }
       }, 500);
       
@@ -67,7 +68,7 @@ const PlatformCard = ({
         clearInterval(checkInterval);
       };
     }
-  }, [audioSrc]);
+  }, [audioSrc, name]);
 
   const toggleAudio = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -78,7 +79,7 @@ const PlatformCard = ({
     }
     
     if (audioError) {
-      toast.error("Audio file could not be loaded. Try visiting the platform website for more information.");
+      toast.error(`Could not play audio for ${name}. Please try visiting the platform website for more information.`);
       return;
     }
     
@@ -101,7 +102,7 @@ const PlatformCard = ({
           } else if (err.name === "NotAllowedError") {
             toast.error("Playback was prevented. Try interacting with the page first.");
           } else {
-            toast.error("Could not play audio. Please try again later.");
+            toast.error(`Could not play audio for ${name}. Please try again later.`);
           }
           
           setIsPlaying(false);
@@ -166,15 +167,16 @@ const PlatformCard = ({
           {/* Audio Player or Learn More button */}
           {!isComingSoon && (
             <div className="mt-auto">
-              {audioSrc && !audioError ? (
-                <button
+              {audioSrc ? (
+                <Button
                   onClick={toggleAudio}
+                  variant="default"
                   className={cn(
-                    "flex items-center justify-center w-full p-2 rounded-lg text-primary transition-colors",
-                    "bg-primary/10 hover:bg-primary/20",
-                    audioLoaded ? "" : "opacity-70 cursor-wait"
+                    "w-full justify-center",
+                    audioLoaded ? "" : "opacity-70 cursor-wait",
+                    audioError ? "bg-red-500 hover:bg-red-600" : ""
                   )}
-                  disabled={!audioLoaded}
+                  disabled={!audioLoaded && !audioError}
                   aria-label={isPlaying ? "Pause audio" : "Play audio"}
                 >
                   {isPlaying ? (
@@ -185,10 +187,10 @@ const PlatformCard = ({
                   ) : (
                     <>
                       <Play className="h-5 w-5 mr-2" />
-                      <span>{audioLoaded ? "Play Audio" : "Loading Audio..."}</span>
+                      <span>{audioError ? "Audio Unavailable" : (audioLoaded ? "Play Audio" : "Loading Audio...")}</span>
                     </>
                   )}
-                </button>
+                </Button>
               ) : (
                 <Button
                   asChild
