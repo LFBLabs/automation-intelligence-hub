@@ -1,5 +1,4 @@
-
-// Simple utility to handle audio playback
+// Audio utility to handle audio playback from Supabase storage
 export const createAudioPlayer = (audioSrc: string) => {
   // Create audio element
   const audio = new Audio();
@@ -16,10 +15,28 @@ export const createAudioPlayer = (audioSrc: string) => {
     hasError = true;
   });
   
-  // Load the audio file with correct relative path
-  // Remove any leading slash to ensure proper relative path resolution
-  const cleanPath = audioSrc.startsWith('/') ? audioSrc.substring(1) : audioSrc;
-  audio.src = cleanPath;
+  // Determine if the audio source is from Supabase storage
+  const isSupabaseStorage = audioSrc.includes('platform-audio-files/');
+  
+  // If it's from Supabase storage, use the full public URL
+  if (isSupabaseStorage) {
+    // Construct the Supabase storage URL
+    const supabaseUrl = "https://fdygqdfvzbrxzoroeper.supabase.co";
+    const bucketName = "platform-audio-files";
+    
+    // Extract just the filename if the full path is given
+    const fileName = audioSrc.includes('/') 
+      ? audioSrc.split('/').pop() 
+      : audioSrc;
+      
+    // Build the complete URL
+    audio.src = `${supabaseUrl}/storage/v1/object/public/${bucketName}/${fileName}`;
+  } else {
+    // For local files, keep the existing behavior
+    const cleanPath = audioSrc.startsWith('/') ? audioSrc.substring(1) : audioSrc;
+    audio.src = cleanPath;
+  }
+  
   audio.load();
   
   // Return player controls
