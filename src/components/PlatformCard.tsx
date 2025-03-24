@@ -4,6 +4,7 @@ import { Play, Pause, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 import { Button } from './ui/button';
+import { createAudioPlayer } from '@/utils/audioUtils';
 
 interface PlatformCardProps {
   name: string;
@@ -31,45 +32,47 @@ const PlatformCard = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioLoaded, setAudioLoaded] = useState(false);
   const [audioError, setAudioError] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioPlayerRef = useRef<ReturnType<typeof createAudioPlayer> | null>(null);
 
   useEffect(() => {
-    // Initialize audio element when component mounts
+    // Initialize audio player when component mounts
     if (audioSrc) {
-      audioRef.current = new Audio(audioSrc);
+      const player = createAudioPlayer(audioSrc);
+      audioPlayerRef.current = player;
       
-      // Add event listeners
+      // Set up event listeners
       const handleAudioEnd = () => setIsPlaying(false);
       const handleCanPlayThrough = () => setAudioLoaded(true);
-      const handleError = (e: Event) => {
-        console.error("Audio loading error:", e);
-        setAudioError(true);
-        setAudioLoaded(false);
-      };
       
-      audioRef.current.addEventListener('ended', handleAudioEnd);
-      audioRef.current.addEventListener('canplaythrough', handleCanPlayThrough);
-      audioRef.current.addEventListener('error', handleError);
+      player.addEventListener('ended', handleAudioEnd);
+      player.addEventListener('canplaythrough', handleCanPlayThrough);
       
-      // Preload audio
-      audioRef.current.load();
+      // Check for loading status periodically
+      const checkInterval = setInterval(() => {
+        if (player.isLoaded()) {
+          setAudioLoaded(true);
+          clearInterval(checkInterval);
+        }
+        if (player.hasError()) {
+          setAudioError(true);
+          setAudioLoaded(false);
+          clearInterval(checkInterval);
+        }
+      }, 500);
       
       // Clean up event listeners when component unmounts
       return () => {
-        if (audioRef.current) {
-          audioRef.current.removeEventListener('ended', handleAudioEnd);
-          audioRef.current.removeEventListener('canplaythrough', handleCanPlayThrough);
-          audioRef.current.removeEventListener('error', handleError);
-          audioRef.current.pause();
-          audioRef.current = null;
-        }
+        player.removeEventListener('ended', handleAudioEnd);
+        player.removeEventListener('canplaythrough', handleCanPlayThrough);
+        clearInterval(checkInterval);
       };
     }
   }, [audioSrc]);
 
   const toggleAudio = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (!audioRef.current) {
+    
+    if (!audioPlayerRef.current) {
       toast.error("Audio player not initialized");
       return;
     }
@@ -80,20 +83,23 @@ const PlatformCard = ({
     }
     
     if (isPlaying) {
-      audioRef.current.pause();
+      audioPlayerRef.current.pause();
       setIsPlaying(false);
     } else {
       // Play and handle any errors
-      audioRef.current.play()
+      audioPlayerRef.current.play()
         .then(() => setIsPlaying(true))
         .catch(err => {
           console.error("Error playing audio:", err);
           
           // Provide more specific error messages based on the error
-          if (err.name === "NotSupportedError") {
+          if (err.message.includes("loading")) {
+            toast.error("Audio is still loading. Please try again in a moment.");
+          } else if (err.name === "NotSupportedError") {
             toast.error("Your browser doesn't support this audio format");
+            setAudioError(true);
           } else if (err.name === "NotAllowedError") {
-            toast.error("Playback was prevented by browser policies. Try interacting with the page first.");
+            toast.error("Playback was prevented. Try interacting with the page first.");
           } else {
             toast.error("Could not play audio. Please try again later.");
           }
