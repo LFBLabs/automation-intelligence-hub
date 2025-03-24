@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 interface InsightCardProps {
   title: string;
@@ -61,9 +62,11 @@ const InsightCard = ({
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl font-display font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
-          {title}
-        </h3>
+        <Link to={link}>
+          <h3 className="text-xl font-display font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+            {title}
+          </h3>
+        </Link>
         
         <div className="text-muted-foreground mb-4 overflow-hidden flex-grow">
           {renderExcerpt(excerpt)}
@@ -81,12 +84,12 @@ const InsightCard = ({
           </div>
         </div>
         
-        <a href={link}>
+        <Link to={link}>
           <Button variant="outline" className="w-full group-hover:border-primary transition-colors duration-300">
             <span className="text-zinc-950">Read Article</span>
             <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
-        </a>
+        </Link>
       </div>
     </article>;
 };

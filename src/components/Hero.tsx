@@ -60,7 +60,7 @@ const Hero = () => {
             In-depth analysis and insights on the most powerful AI agent platforms and automation tools shaping the future of work
           </p>
           
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Updated with proper anchor links */}
           <div 
             className={cn(
               "flex flex-col sm:flex-row items-center justify-center gap-4",
@@ -68,14 +68,18 @@ const Hero = () => {
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             )}
           >
-            <Button className="bg-primary hover:bg-primary/90 px-6 py-6 text-lg transition-all duration-300 w-full sm:w-auto">
-              Explore Platforms
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <a href="#platforms">
+              <Button className="bg-primary hover:bg-primary/90 px-6 py-6 text-lg transition-all duration-300 w-full sm:w-auto">
+                Explore Platforms
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </a>
             
-            <Button variant="outline" className="border-2 px-6 py-6 text-lg transition-all duration-300 w-full sm:w-auto">
-              Latest Insights
-            </Button>
+            <a href="#insights">
+              <Button variant="outline" className="border-2 px-6 py-6 text-lg transition-all duration-300 w-full sm:w-auto">
+                Latest Insights
+              </Button>
+            </a>
           </div>
         </div>
       </div>

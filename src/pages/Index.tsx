@@ -7,7 +7,7 @@ import LatestInsights from '@/components/LatestInsights';
 import Footer from '@/components/Footer';
 
 const Index = () => {
-  // Smooth scroll for anchor links
+  // Improved smooth scroll for anchor links
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -23,8 +23,14 @@ const Index = () => {
       
       if (targetElement) {
         e.preventDefault();
+        
+        // Calculate proper offset for header
+        const headerOffset = 80;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
         window.scrollTo({
-          top: targetElement.offsetTop - 100,
+          top: offsetPosition,
           behavior: 'smooth'
         });
       }
