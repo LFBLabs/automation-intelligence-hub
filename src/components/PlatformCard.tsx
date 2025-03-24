@@ -1,6 +1,5 @@
-
 import { useState, useEffect, useRef } from 'react';
-import { Play, Pause, ExternalLink } from 'lucide-react';
+import { Play, Pause, ExternalLink, Volume2, VolumeX } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 import { Button } from './ui/button';
@@ -32,17 +31,23 @@ const PlatformCard = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioLoaded, setAudioLoaded] = useState(false);
   const [audioError, setAudioError] = useState(false);
+  const [isLoadingAudio, setIsLoadingAudio] = useState(true);
   const audioPlayerRef = useRef<ReturnType<typeof createAudioPlayer> | null>(null);
 
   useEffect(() => {
     // Initialize audio player when component mounts
     if (audioSrc) {
+      console.log(`Setting up audio player for ${name} with source: ${audioSrc}`);
       const player = createAudioPlayer(audioSrc);
       audioPlayerRef.current = player;
       
       // Set up event listeners
       const handleAudioEnd = () => setIsPlaying(false);
-      const handleCanPlayThrough = () => setAudioLoaded(true);
+      const handleCanPlayThrough = () => {
+        console.log(`Audio for ${name} is ready to play`);
+        setAudioLoaded(true);
+        setIsLoadingAudio(false);
+      };
       
       player.addEventListener('ended', handleAudioEnd);
       player.addEventListener('canplaythrough', handleCanPlayThrough);
@@ -50,16 +55,31 @@ const PlatformCard = ({
       // Check for loading status periodically
       const checkInterval = setInterval(() => {
         if (player.isLoaded()) {
+          console.log(`Audio for ${name} loaded successfully`);
           setAudioLoaded(true);
+          setIsLoadingAudio(false);
           clearInterval(checkInterval);
         }
+        
         if (player.hasError()) {
+          console.log(`Failed to load audio for ${name}: ${audioSrc}`);
           setAudioError(true);
           setAudioLoaded(false);
+          setIsLoadingAudio(false);
           clearInterval(checkInterval);
-          console.log(`Failed to load audio for ${name}: ${audioSrc}`);
         }
       }, 500);
+      
+      // Set a timeout to stop checking after 10 seconds
+      setTimeout(() => {
+        if (isLoadingAudio) {
+          console.log(`Audio loading timeout for ${name}`);
+          clearInterval(checkInterval);
+          // If still loading after 10 seconds, attempt to play anyway
+          setAudioLoaded(true);
+          setIsLoadingAudio(false);
+        }
+      }, 10000);
       
       // Clean up event listeners when component unmounts
       return () => {
@@ -68,7 +88,7 @@ const PlatformCard = ({
         clearInterval(checkInterval);
       };
     }
-  }, [audioSrc, name]);
+  }, [audioSrc, name, isLoadingAudio]);
 
   const toggleAudio = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -86,12 +106,19 @@ const PlatformCard = ({
     if (isPlaying) {
       audioPlayerRef.current.pause();
       setIsPlaying(false);
+      toast.info(`Paused audio for ${name}`);
     } else {
-      // Play and handle any errors
+      // Try to play the audio
+      console.log(`Attempting to play audio for ${name}`);
+      
       audioPlayerRef.current.play()
-        .then(() => setIsPlaying(true))
+        .then(() => {
+          console.log(`Successfully playing audio for ${name}`);
+          setIsPlaying(true);
+          toast.success(`Playing audio for ${name}`);
+        })
         .catch(err => {
-          console.error("Error playing audio:", err);
+          console.error(`Error playing audio for ${name}:`, err);
           
           // Provide more specific error messages based on the error
           if (err.message.includes("loading")) {
@@ -103,6 +130,8 @@ const PlatformCard = ({
             toast.error("Playback was prevented. Try interacting with the page first.");
           } else {
             toast.error(`Could not play audio for ${name}. Please try again later.`);
+            // Mark as error after failed play attempt
+            setAudioError(true);
           }
           
           setIsPlaying(false);
@@ -170,13 +199,12 @@ const PlatformCard = ({
               {audioSrc ? (
                 <Button
                   onClick={toggleAudio}
-                  variant="default"
+                  variant={audioError ? "destructive" : "default"}
                   className={cn(
                     "w-full justify-center",
-                    audioLoaded ? "" : "opacity-70 cursor-wait",
-                    audioError ? "bg-red-500 hover:bg-red-600" : ""
+                    isLoadingAudio ? "opacity-70 cursor-wait" : ""
                   )}
-                  disabled={!audioLoaded && !audioError}
+                  disabled={isLoadingAudio}
                   aria-label={isPlaying ? "Pause audio" : "Play audio"}
                 >
                   {isPlaying ? (
@@ -186,8 +214,14 @@ const PlatformCard = ({
                     </>
                   ) : (
                     <>
-                      <Play className="h-5 w-5 mr-2" />
-                      <span>{audioError ? "Audio Unavailable" : (audioLoaded ? "Play Audio" : "Loading Audio...")}</span>
+                      {audioError ? <VolumeX className="h-5 w-5 mr-2" /> : <Volume2 className="h-5 w-5 mr-2" />}
+                      <span>
+                        {audioError 
+                          ? "Audio Unavailable" 
+                          : (isLoadingAudio 
+                            ? "Loading Audio..." 
+                            : "Play Audio")}
+                      </span>
                     </>
                   )}
                 </Button>

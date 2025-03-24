@@ -1,3 +1,4 @@
+
 // Audio utility to handle audio playback from Supabase storage
 export const createAudioPlayer = (audioSrc: string) => {
   // Create audio element
@@ -30,10 +31,13 @@ export const createAudioPlayer = (audioSrc: string) => {
       : audioSrc;
       
     // Build the complete URL
-    audio.src = `${supabaseUrl}/storage/v1/object/public/${bucketName}/${fileName}`;
+    const fullUrl = `${supabaseUrl}/storage/v1/object/public/${bucketName}/${fileName}`;
+    console.log("Loading audio from:", fullUrl);
+    audio.src = fullUrl;
   } else {
     // For local files, keep the existing behavior
     const cleanPath = audioSrc.startsWith('/') ? audioSrc.substring(1) : audioSrc;
+    console.log("Loading local audio from:", cleanPath);
     audio.src = cleanPath;
   }
   
@@ -43,11 +47,17 @@ export const createAudioPlayer = (audioSrc: string) => {
   return {
     play: () => {
       if (hasError) {
+        console.error("Cannot play: Audio file could not be loaded");
         return Promise.reject(new Error("Audio file could not be loaded"));
       }
       
       if (!isLoaded) {
-        return Promise.reject(new Error("Audio is still loading"));
+        console.log("Audio is still loading, attempting to play anyway...");
+        // Try to play even if not fully loaded - some browsers work this way
+        return audio.play().catch(err => {
+          console.error("Play failed:", err);
+          throw err;
+        });
       }
       
       return audio.play();
