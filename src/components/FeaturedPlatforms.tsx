@@ -41,10 +41,12 @@ const platformsData = [
     isComingSoon: false
   },
   {
-    name: "Future Platform 2",
-    category: "Coming Soon",
-    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Coming+Soon&font=playfair",
-    isComingSoon: true
+    name: "Vellum Agents",
+    category: "AI Agent Platform",
+    description: "Build, deploy, and monitor sophisticated AI agents for complex tasks. Vellum's platform provides the infrastructure for enterprise-grade LLM applications.",
+    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Vellum+Agents&font=playfair",
+    link: "https://vellum.ai",
+    isComingSoon: false
   },
   {
     name: "Future Platform 3",
