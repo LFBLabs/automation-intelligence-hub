@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect } from 'react';
 import PlatformCard from './PlatformCard';
 import { cn } from '@/lib/utils';
@@ -32,10 +31,13 @@ const platformsData = [
     isComingSoon: false
   },
   {
-    name: "Future Platform 1",
-    category: "Coming Soon",
-    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Coming+Soon&font=playfair",
-    isComingSoon: true
+    name: "Synthflow AI",
+    category: "AI Automation",
+    description: "A powerful AI platform that helps businesses streamline operations and automate complex processes with intelligent workflows.",
+    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Synthflow+AI&font=playfair",
+    audioSrc: "platform-audio-files/synthflow-audio.mp3",
+    link: "https://example.com/synthflow",
+    isComingSoon: false
   },
   {
     name: "Future Platform 2",
