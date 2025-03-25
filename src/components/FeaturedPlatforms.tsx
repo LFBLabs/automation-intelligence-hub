@@ -1,3 +1,4 @@
+
 import { useRef, useState, useEffect } from 'react';
 import PlatformCard from './PlatformCard';
 import { cn } from '@/lib/utils';
@@ -33,7 +34,7 @@ const platformsData = [
   {
     name: "Synthflow AI",
     category: "AI Automation",
-    description: "A powerful AI platform that helps businesses streamline operations and automate complex processes with intelligent workflows.",
+    description: "Create custom AI phone call agents effortlessly with Synthflow. No coding or tech skills needed—just your data and ideas for powerful automation.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Synthflow+AI&font=playfair",
     audioSrc: "platform-audio-files/synthflow-audio.mp3",
     link: "https://example.com/synthflow",
