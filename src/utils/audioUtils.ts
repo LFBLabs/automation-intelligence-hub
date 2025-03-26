@@ -16,30 +16,19 @@ export const createAudioPlayer = (audioSrc: string) => {
     hasError = true;
   });
   
-  // Determine if the audio source is from Supabase storage
-  const isSupabaseStorage = audioSrc.includes('platform-audio-files/');
+  // Use the Supabase storage URL for the audio files
+  const supabaseUrl = "https://fdygqdfvzbrxzoroeper.supabase.co";
+  const bucketName = "platform-audio-files";
   
-  // If it's from Supabase storage, use the full public URL
-  if (isSupabaseStorage) {
-    // Construct the Supabase storage URL
-    const supabaseUrl = "https://fdygqdfvzbrxzoroeper.supabase.co";
-    const bucketName = "platform-audio-files";
+  // Extract just the filename if the full path is given
+  const fileName = audioSrc.includes('/') 
+    ? audioSrc.split('/').pop() 
+    : audioSrc;
     
-    // Extract just the filename if the full path is given
-    const fileName = audioSrc.includes('/') 
-      ? audioSrc.split('/').pop() 
-      : audioSrc;
-      
-    // Build the complete URL
-    const fullUrl = `${supabaseUrl}/storage/v1/object/public/${bucketName}/${fileName}`;
-    console.log("Loading audio from:", fullUrl);
-    audio.src = fullUrl;
-  } else {
-    // For local files, keep the existing behavior
-    const cleanPath = audioSrc.startsWith('/') ? audioSrc.substring(1) : audioSrc;
-    console.log("Loading local audio from:", cleanPath);
-    audio.src = cleanPath;
-  }
+  // Build the complete URL
+  const fullUrl = `${supabaseUrl}/storage/v1/object/public/${bucketName}/${fileName}`;
+  console.log("Loading audio from:", fullUrl);
+  audio.src = fullUrl;
   
   audio.load();
   
