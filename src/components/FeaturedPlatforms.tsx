@@ -9,7 +9,7 @@ const platformsData = [
     category: "Automation Platform",
     description: "A visual platform letting you design, build, and automate anything from simple tasks to complex workflows in minutes.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Make.com&font=playfair",
-    audioSrc: "platform-audio-files/make-audio.mp3",
+    audioSrc: "make-audio.mp3",
     link: "https://www.make.com",
     isComingSoon: false
   },
@@ -18,7 +18,7 @@ const platformsData = [
     category: "Workflow Automation",
     description: "Open-source workflow automation tool with a fair-code license that helps you to connect different services and build automated workflows.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=n8n&font=playfair",
-    audioSrc: "platform-audio-files/n8n-audio.mp3",
+    audioSrc: "n8n-audio.mp3",
     link: "https://n8n.io",
     isComingSoon: false
   },
@@ -27,7 +27,7 @@ const platformsData = [
     category: "AI Platform",
     description: "Build, deploy, and scale AI applications with a platform that simplifies data integration and AI capability development.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Relevance+AI&font=playfair",
-    audioSrc: "platform-audio-files/relevance-audio.mp3",
+    audioSrc: "relevance-audio.mp3",
     link: "https://relevance.ai",
     isComingSoon: false
   },
@@ -36,7 +36,7 @@ const platformsData = [
     category: "AI Automation",
     description: "Create custom AI phone call agents effortlessly with Synthflow. No coding or tech skills needed—just your data and ideas for powerful automation.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Synthflow+AI&font=playfair",
-    audioSrc: "platform-audio-files/synthflowai-audio.mp3",
+    audioSrc: "synthflowai-audio.mp3",
     link: "https://example.com/synthflow",
     isComingSoon: false
   },
@@ -45,7 +45,7 @@ const platformsData = [
     category: "AI Agent Platform",
     description: "Build, deploy, and monitor sophisticated AI agents for complex tasks. Vellum's platform provides the infrastructure for enterprise-grade LLM applications.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Vellum+Agents&font=playfair",
-    audioSrc: "platform-audio-files/vellum-agents-audio.mp3",
+    audioSrc: "vellum-agents-audio.mp3",
     link: "https://vellum.ai",
     isComingSoon: false
   },
