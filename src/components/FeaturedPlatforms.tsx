@@ -36,7 +36,7 @@ const platformsData = [
     category: "AI Automation",
     description: "Create custom AI phone call agents effortlessly with Synthflow. No coding or tech skills needed—just your data and ideas for powerful automation.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Synthflow+AI&font=playfair",
-    audioSrc: "synthflowai-audio.mp3",
+    audioSrc: "synthflow-audio.mp3", // Changed from synthflowai-audio.mp3 to match the correct file name
     link: "https://example.com/synthflow",
     isComingSoon: false
   },
@@ -45,7 +45,7 @@ const platformsData = [
     category: "AI Agent Platform",
     description: "Build, deploy, and monitor sophisticated AI agents for complex tasks. Vellum's platform provides the infrastructure for enterprise-grade LLM applications.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Vellum+Agents&font=playfair",
-    audioSrc: "vellum-agents-audio.mp3",
+    audioSrc: "vellum-audio.mp3", // Changed from vellum-agents-audio.mp3 to match the correct file name
     link: "https://vellum.ai",
     isComingSoon: false
   },
