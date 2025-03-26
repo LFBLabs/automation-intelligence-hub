@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect } from 'react';
 import PlatformCard from './PlatformCard';
 import { cn } from '@/lib/utils';
@@ -10,7 +9,7 @@ const platformsData = [
     description: "A visual platform letting you design, build, and automate anything from simple tasks to complex workflows in minutes.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Make.com&font=playfair",
     audioSrc: "make-audio.mp3",
-    link: "https://www.make.com",
+    link: "https://www.make.com/en/register?pc=lfblabs",
     isComingSoon: false
   },
   {
@@ -36,7 +35,7 @@ const platformsData = [
     category: "AI Automation",
     description: "Create custom AI phone call agents effortlessly with Synthflow. No coding or tech skills needed—just your data and ideas for powerful automation.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Synthflow+AI&font=playfair",
-    audioSrc: "synthflow-audio.mp3", // Changed from synthflowai-audio.mp3 to match the correct file name
+    audioSrc: "synthflow-audio.mp3",
     link: "https://example.com/synthflow",
     isComingSoon: false
   },
@@ -45,7 +44,7 @@ const platformsData = [
     category: "AI Agent Platform",
     description: "Build, deploy, and monitor sophisticated AI agents for complex tasks. Vellum's platform provides the infrastructure for enterprise-grade LLM applications.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Vellum+Agents&font=playfair",
-    audioSrc: "vellum-audio.mp3", // Changed from vellum-agents-audio.mp3 to match the correct file name
+    audioSrc: "vellum-audio.mp3",
     link: "https://vellum.ai",
     isComingSoon: false
   },
