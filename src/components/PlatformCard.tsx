@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, ExternalLink, Volume2, VolumeX } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -193,10 +194,11 @@ const PlatformCard = ({
             </p>
           )}
 
-          {/* Audio Player or Learn More button */}
+          {/* Action Buttons */}
           {!isComingSoon && (
-            <div className="mt-auto">
-              {audioSrc ? (
+            <div className="mt-auto space-y-2">
+              {/* Audio Player Button */}
+              {audioSrc && (
                 <Button
                   onClick={toggleAudio}
                   variant={audioError ? "destructive" : "default"}
@@ -225,20 +227,23 @@ const PlatformCard = ({
                     </>
                   )}
                 </Button>
-              ) : (
+              )}
+              
+              {/* Take Me There Button */}
+              {link && (
                 <Button
                   asChild
                   variant="outline"
                   className="w-full"
                 >
                   <a
-                    href={link || "#"}
+                    href={link}
                     className="inline-flex items-center justify-center"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <ExternalLink className="h-4 w-4 mr-2" />
-                    Learn More
+                    Take Me There
                   </a>
                 </Button>
               )}
