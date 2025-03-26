@@ -18,7 +18,7 @@ const platformsData = [
     description: "Open-source workflow automation tool with a fair-code license that helps you to connect different services and build automated workflows.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=n8n&font=playfair",
     audioSrc: "n8n-audio.mp3",
-    link: "https://n8n.io",
+    link: "https://n8n.partnerlinks.io/5xaabr8yr33m",
     isComingSoon: false
   },
   {
