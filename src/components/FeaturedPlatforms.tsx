@@ -27,7 +27,7 @@ const platformsData = [
     description: "Build, deploy, and scale AI applications with a platform that simplifies data integration and AI capability development.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Relevance+AI&font=playfair",
     audioSrc: "relevance-audio.mp3",
-    link: "https://relevance.ai",
+    link: "https://relevanceai.com/?via=pieterse",
     isComingSoon: false
   },
   {
