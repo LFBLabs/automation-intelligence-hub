@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect } from 'react';
 import PlatformCard from './PlatformCard';
 import { cn } from '@/lib/utils';
@@ -50,10 +49,12 @@ const platformsData = [
     isComingSoon: false
   },
   {
-    name: "Future Platform 3",
-    category: "Coming Soon",
-    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Coming+Soon&font=playfair",
-    isComingSoon: true
+    name: "Jotform AI Assistant",
+    category: "Form Automation",
+    description: "AI-powered form builder with advanced features to create smart forms, automate workflows, and analyze data with built-in intelligence.",
+    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Jotform+AI&font=playfair",
+    audioSrc: "jotform-audio.mp3",
+    isComingSoon: false
   }
 ];
 
