@@ -1,3 +1,4 @@
+
 import { useRef, useState, useEffect } from 'react';
 import PlatformCard from './PlatformCard';
 import { cn } from '@/lib/utils';
@@ -45,7 +46,7 @@ const platformsData = [
     description: "Build, deploy, and monitor sophisticated AI agents for complex tasks. Vellum's platform provides the infrastructure for enterprise-grade LLM applications.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Vellum+Agents&font=playfair",
     audioSrc: "vellum-audio.mp3",
-    link: "https://vellum.ai",
+    link: "https://www.vellum.ai/",
     isComingSoon: false
   },
   {
