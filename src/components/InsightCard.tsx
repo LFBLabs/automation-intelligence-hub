@@ -1,10 +1,8 @@
-
 import { useState } from 'react';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-
 interface InsightCardProps {
   title: string;
   excerpt: string;
@@ -15,7 +13,6 @@ interface InsightCardProps {
   link: string;
   index: number;
 }
-
 const InsightCard = ({
   title,
   excerpt,
@@ -35,7 +32,6 @@ const InsightCard = ({
         {text}
       </p>;
     }
-    
     return text.split('\n\n').map((paragraph, i) => {
       // Check if paragraph is a heading (surrounded by **)
       if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
@@ -46,7 +42,6 @@ const InsightCard = ({
       return <p key={i} className="mb-2 text-sm">{paragraph}</p>;
     });
   };
-
   return <article className={cn("group overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border border-border", "hover:shadow-lg transition-all duration-300", "animate-fade-in", "h-full flex flex-col")} style={{
     animationDelay: `${index * 150}ms`
   }}>
@@ -86,12 +81,11 @@ const InsightCard = ({
         
         <Link to={link}>
           <Button variant="outline" className="w-full group-hover:border-primary transition-colors duration-300">
-            <span className="text-zinc-950">Read Article</span>
+            <span className="text-zinc-50">Read Article</span>
             <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
         </Link>
       </div>
     </article>;
 };
-
 export default InsightCard;
