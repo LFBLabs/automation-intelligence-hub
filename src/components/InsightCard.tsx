@@ -1,10 +1,8 @@
-
 import { useState } from 'react';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-
 interface InsightCardProps {
   title: string;
   excerpt: string;
@@ -15,7 +13,6 @@ interface InsightCardProps {
   link: string;
   index: number;
 }
-
 const InsightCard = ({
   title,
   excerpt,
@@ -35,7 +32,6 @@ const InsightCard = ({
         {text}
       </p>;
     }
-    
     return text.split('\n\n').map((paragraph, i) => {
       // Check if paragraph is a heading (surrounded by **)
       if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
@@ -46,28 +42,13 @@ const InsightCard = ({
       return <p key={i} className="mb-2 text-xs md:text-sm">{paragraph}</p>;
     });
   };
-
-  return (
-    <article 
-      className={cn(
-        "group overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border border-border", 
-        "hover:shadow-lg transition-all duration-300", 
-        "animate-fade-in", 
-        "h-full flex flex-col"
-      )} 
-      style={{
-        animationDelay: `${index * 150}ms`
-      }}
-    >
+  return <article className={cn("group overflow-hidden rounded-2xl bg-white dark:bg-gray-900 border border-border", "hover:shadow-lg transition-all duration-300", "animate-fade-in", "h-full flex flex-col")} style={{
+    animationDelay: `${index * 150}ms`
+  }}>
       {/* Image */}
       <div className="relative h-48 md:h-56 lg:h-64 overflow-hidden">
-        <div className={cn("absolute inset-0 bg-gray-200 animate-pulse", isImageLoaded ? "opacity-0" : "opacity-100")} />
-        <img 
-          src={coverImage} 
-          alt={title} 
-          onLoad={() => setIsImageLoaded(true)} 
-          className="w-full h-full object-cover"
-        />
+        <div className="" />
+        <img src={coverImage} alt={title} onLoad={() => setIsImageLoaded(true)} className="w-full h-full object-contain" />
         {/* Category tag */}
         <div className="absolute top-4 left-4 bg-primary text-white text-xs font-medium px-3 py-1 rounded-full">
           {category}
@@ -105,8 +86,6 @@ const InsightCard = ({
           </Button>
         </Link>
       </div>
-    </article>
-  );
+    </article>;
 };
-
 export default InsightCard;
