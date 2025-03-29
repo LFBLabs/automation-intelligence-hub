@@ -17,7 +17,7 @@ const insightsData = [
     title: "LangChain vs LlamaIndex: Choosing the Right Framework for Your AI Application",
     excerpt: "**Framework Comparison**\n\nA detailed comparison of two leading frameworks for building applications with language models, with practical examples and performance benchmarks.",
     category: "Frameworks",
-    coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Framework+Comparison",
+    coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Framework+Comparison&font=Arial&size=20",
     date: "February 22, 2025",
     readTime: "15 min read",
     link: "/article/langchain-vs-llamaindex"
@@ -26,7 +26,7 @@ const insightsData = [
     title: "Building Conversational AI Agents That Connect To Your Tools and Data",
     excerpt: "**Conversational Agents**\n\nStep-by-step guide on creating AI agents that understand context and leverage your internal knowledge.\n\n**Key Integration Points**\n\nLearn how to connect your AI agents with your existing tools and databases for maximum efficiency.\n\n**Best Practices**\n\nDiscover proven techniques for designing natural, effective conversational interfaces.",
     category: "Tutorial",
-    coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Conversational+Agents",
+    coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Conversational+Agents&font=Arial&size=20",
     date: "March 8, 2025",
     readTime: "20 min read",
     link: "/article/conversational-agents"
