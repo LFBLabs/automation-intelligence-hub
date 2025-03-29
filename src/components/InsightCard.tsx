@@ -31,7 +31,7 @@ const InsightCard = ({
   // Function to render formatted excerpt content with markdown-like formatting
   const renderExcerpt = (text: string) => {
     if (!text.includes('\n') && !text.includes('**')) {
-      return <p className="line-clamp-3 text-sm">
+      return <p className="line-clamp-3 text-xs md:text-sm">
         {text}
       </p>;
     }
@@ -39,11 +39,11 @@ const InsightCard = ({
     return text.split('\n\n').map((paragraph, i) => {
       // Check if paragraph is a heading (surrounded by **)
       if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
-        return <h4 key={i} className="font-semibold text-sm mt-2 mb-1">
+        return <h4 key={i} className="font-semibold text-xs md:text-sm mt-2 mb-1">
           {paragraph.slice(2, -2)}
         </h4>;
       }
-      return <p key={i} className="mb-2 text-sm">{paragraph}</p>;
+      return <p key={i} className="mb-2 text-xs md:text-sm">{paragraph}</p>;
     });
   };
 
@@ -75,9 +75,9 @@ const InsightCard = ({
       </div>
 
       {/* Content */}
-      <div className="p-6 flex flex-col flex-grow">
+      <div className="p-5 flex flex-col flex-grow">
         <Link to={link}>
-          <h3 className="text-xl font-display font-semibold mb-3 group-hover:text-primary transition-colors duration-300">
+          <h3 className="text-lg md:text-xl font-display font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
             {title}
           </h3>
         </Link>
@@ -100,7 +100,7 @@ const InsightCard = ({
         
         <Link to={link}>
           <Button variant="outline" className="w-full group-hover:border-primary transition-colors duration-300">
-            <span className="text-zinc-50">Read Article</span>
+            <span>Read Article</span>
             <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Button>
         </Link>

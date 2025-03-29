@@ -8,7 +8,7 @@ const insightsData = [
     title: "How AutoGPT is Redefining Autonomous AI Agents",
     excerpt: "**AutoGPT Analysis**\n\nAn in-depth exploration of how AutoGPT enables AI agents to execute complex tasks with minimal human supervision and what this means for the future of work.",
     category: "AI Agents",
-    coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=AutoGPT+Analysis&font=Arial&size=20",
+    coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=AutoGPT+Analysis&font=Arial&size=16",
     date: "January 15, 2025",
     readTime: "12 min read",
     link: "/article/autogpt"
@@ -17,7 +17,7 @@ const insightsData = [
     title: "LangChain vs LlamaIndex: Choosing the Right Framework for Your AI Application",
     excerpt: "**Framework Comparison**\n\nA detailed comparison of two leading frameworks for building applications with language models, with practical examples and performance benchmarks.",
     category: "Frameworks",
-    coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Framework+Comparison&font=Arial&size=20",
+    coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Framework+Comparison&font=Arial&size=16",
     date: "February 22, 2025",
     readTime: "15 min read",
     link: "/article/langchain-vs-llamaindex"
@@ -26,7 +26,7 @@ const insightsData = [
     title: "Building Conversational AI Agents That Connect To Your Tools and Data",
     excerpt: "**Conversational Agents**\n\nStep-by-step guide on creating AI agents that understand context and leverage your internal knowledge.\n\n**Key Integration Points**\n\nLearn how to connect your AI agents with your existing tools and databases for maximum efficiency.\n\n**Best Practices**\n\nDiscover proven techniques for designing natural, effective conversational interfaces.",
     category: "Tutorial",
-    coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Conversational+Agents&font=Arial&size=20",
+    coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Conversational+Agents&font=Arial&size=16",
     date: "March 8, 2025",
     readTime: "20 min read",
     link: "/article/conversational-agents"
@@ -63,7 +63,7 @@ const LatestInsights = () => {
   }, []);
 
   return (
-    <section id="insights" className="py-20 bg-secondary/50">
+    <section id="insights" className="py-20 bg-secondary/50" ref={sectionRef}>
       <div className="container px-6 md:px-8">
         <div 
           className={cn(
