@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -48,7 +49,12 @@ const InsightCard = ({
       {/* Image */}
       <div className="relative h-48 md:h-56 lg:h-64 overflow-hidden">
         <div className={cn("absolute inset-0 bg-gray-200 animate-pulse", isImageLoaded ? "opacity-0" : "opacity-100")} />
-        <img src={coverImage} alt={title} onLoad={() => setIsImageLoaded(true)} className="" />
+        <img 
+          src={coverImage} 
+          alt={title} 
+          onLoad={() => setIsImageLoaded(true)} 
+          className="w-full h-full object-cover"
+        />
         {/* Category tag */}
         <div className="absolute top-4 left-4 bg-primary text-white text-xs font-medium px-3 py-1 rounded-full">
           {category}

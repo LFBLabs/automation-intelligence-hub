@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect } from 'react';
 import InsightCard from './InsightCard';
 import { cn } from '@/lib/utils';
