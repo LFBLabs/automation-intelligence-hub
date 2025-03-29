@@ -9,7 +9,7 @@ const insightsData = [
     excerpt: "**AutoGPT Analysis**\n\nAn in-depth exploration of how AutoGPT enables AI agents to execute complex tasks with minimal human supervision and what this means for the future of work.",
     category: "AI Agents",
     coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=AutoGPT+Analysis",
-    date: "June 12, 2024",
+    date: "June 12, 2025",
     readTime: "12 min read",
     link: "/article/autogpt"
   },
@@ -18,7 +18,7 @@ const insightsData = [
     excerpt: "**Framework Comparison**\n\nA detailed comparison of two leading frameworks for building applications with language models, with practical examples and performance benchmarks.",
     category: "Frameworks",
     coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Framework+Comparison",
-    date: "May 28, 2024",
+    date: "May 28, 2025",
     readTime: "15 min read",
     link: "/article/langchain-vs-llamaindex"
   },
@@ -27,7 +27,7 @@ const insightsData = [
     excerpt: "**Conversational Agents**\n\nStep-by-step guide on creating AI agents that understand context and leverage your internal knowledge.\n\n**Key Integration Points**\n\nLearn how to connect your AI agents with your existing tools and databases for maximum efficiency.\n\n**Best Practices**\n\nDiscover proven techniques for designing natural, effective conversational interfaces.",
     category: "Tutorial",
     coverImage: "https://placehold.co/800x400/f0f5ff/3b82f6?text=Conversational+Agents",
-    date: "May 15, 2024",
+    date: "May 15, 2025",
     readTime: "20 min read",
     link: "/article/conversational-agents"
   }
