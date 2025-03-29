@@ -75,19 +75,19 @@ const InsightCard = ({
       </div>
 
       {/* Content */}
-      <div className="p-5 flex flex-col flex-grow">
+      <div className="p-4 flex flex-col flex-grow">
         <Link to={link}>
-          <h3 className="text-lg md:text-xl font-display font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+          <h3 className="text-base md:text-lg font-display font-semibold mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-300">
             {title}
           </h3>
         </Link>
         
-        <div className="text-muted-foreground mb-4 overflow-hidden flex-grow">
+        <div className="text-muted-foreground mb-3 overflow-hidden flex-grow">
           {renderExcerpt(excerpt)}
         </div>
         
         {/* Meta */}
-        <div className="flex items-center text-xs text-muted-foreground mb-5 mt-auto">
+        <div className="flex items-center text-xs text-muted-foreground mb-4 mt-auto">
           <div className="flex items-center">
             <Calendar className="h-3.5 w-3.5 mr-1" />
             <span>{date}</span>
