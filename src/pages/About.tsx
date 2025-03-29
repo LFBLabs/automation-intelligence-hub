@@ -3,6 +3,9 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,6 +41,16 @@ const About = () => {
       <Navigation />
       
       <main className="flex-grow pt-24">
+        {/* Back to Home Button */}
+        <div className="container px-6 md:px-8 pt-4">
+          <Link to="/">
+            <Button variant="ghost" className="flex items-center gap-2 hover:bg-primary/10 group">
+              <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
+              <span>Back to Home</span>
+            </Button>
+          </Link>
+        </div>
+        
         <section 
           ref={sectionRef}
           className="py-16 md:py-24"
