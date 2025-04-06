@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -38,16 +39,16 @@ const Hero = () => {
           
           {/* CTA Buttons - Updated with proper anchor links */}
           <div className={cn("flex flex-col sm:flex-row items-center justify-center gap-4", "transform transition-all duration-700 delay-300", isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4")}>
-            <a href="#platforms">
+            <a href="#info">
               <Button className="bg-primary hover:bg-primary/90 px-6 py-6 text-lg transition-all duration-300 w-full sm:w-auto">
-                Explore Platforms
+                Learn About AI
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </a>
             
-            <a href="#insights">
+            <a href="#platforms">
               <Button variant="outline" className="border-2 px-6 py-6 text-lg transition-all duration-300 w-full sm:w-auto">
-                Latest Insights
+                Explore Platforms
               </Button>
             </a>
           </div>

@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
+import InfoSection from '@/components/InfoSection';
 import FeaturedPlatforms from '@/components/FeaturedPlatforms';
 import LatestInsights from '@/components/LatestInsights';
 import Footer from '@/components/Footer';
@@ -49,6 +50,7 @@ const Index = () => {
       
       <main className="flex-grow">
         <Hero />
+        <InfoSection />
         <FeaturedPlatforms />
         <LatestInsights />
       </main>

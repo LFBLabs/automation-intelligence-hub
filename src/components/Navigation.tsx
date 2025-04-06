@@ -21,6 +21,7 @@ const Navigation = () => {
 
   const navItems = [
     { label: 'Home', href: '/', isExternal: false },
+    { label: 'Info', href: '#info', isExternal: true },
     { label: 'Platforms', href: '#platforms', isExternal: true },
     { label: 'Insights', href: '#insights', isExternal: true },
     { label: 'About', href: '/about', isExternal: false },
