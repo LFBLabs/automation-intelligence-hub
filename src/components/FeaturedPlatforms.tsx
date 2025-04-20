@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect } from 'react';
 import PlatformCard from './PlatformCard';
 import { cn } from '@/lib/utils';
@@ -50,11 +49,11 @@ const platformsData = [
     isComingSoon: false
   },
   {
-    name: "Jotform AI Assistant",
-    category: "Form Automation",
-    description: "AI-powered form builder with advanced features to create smart forms, automate workflows, and analyze data with built-in intelligence.",
-    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Jotform+AI&font=playfair",
-    audioSrc: "jotform-audio.mp3",
+    name: "Latenode",
+    category: "Automation Platform",
+    description: "Latenode helps businesses automate their processes with AI-powered workflows, enabling seamless integration of tasks and enhanced productivity.",
+    logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Latenode&font=playfair",
+    audioSrc: "latenode-audio.mp3",
     isComingSoon: false
   }
 ];
