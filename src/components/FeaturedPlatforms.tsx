@@ -1,3 +1,4 @@
+
 import { useRef, useState, useEffect } from 'react';
 import PlatformCard from './PlatformCard';
 import { cn } from '@/lib/utils';
@@ -54,6 +55,7 @@ const platformsData = [
     description: "Latenode helps businesses automate their processes with AI-powered workflows, enabling seamless integration of tasks and enhanced productivity.",
     logo: "https://placehold.co/400x100/f8f9fa/5a6268?text=Latenode&font=playfair",
     audioSrc: "latenode-audio.mp3",
+    link: "https://latenode.com/?linkId=lp_474051&sourceId=lfb-labs&tenantId=latenode", // Added link
     isComingSoon: false
   }
 ];
